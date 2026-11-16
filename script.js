@@ -8,6 +8,10 @@ function mostrarSlide(index) {
 }
 
 function mudarSlide(direcao) {
+    if (slides.length === 0) {
+        return;
+    }
+
     slideIndex += direcao;
 
     if (slideIndex < 0) {
@@ -22,14 +26,37 @@ function mudarSlide(direcao) {
 }
 
 mostrarSlide(slideIndex);
-setInterval(() => {
+if (slides.length > 1) {
+    setInterval(() => {
         mudarSlide(1);
     }, 8000);
+}
+
+function verMais(categoria) {
+    const lista = document.getElementById(`lista-${categoria}`);
+
+    if (!lista) {
+        return;
+    }
+
+    const produtos = lista.getElementsByClassName("produto-card");
+    let novosProdutos = "";
+
+    for (let i = 0; i < produtos.length && i < 6; i++) {
+        novosProdutos += produtos[i].outerHTML;
+    }
+
+    lista.innerHTML += novosProdutos;
+}
 
 const formCadastro = document.getElementById("form-cadastro");
 const formLogin = document.getElementById("form-login");
 
 function mostrarForm(form) {
+    if (!formCadastro || !formLogin) {
+        return;
+    }
+
     formCadastro.style.display = "none";
     formLogin.style.display = "none";
 
@@ -42,4 +69,6 @@ function mostrarForm(form) {
     }
 }
 
-mostrarForm("login");
+if (formCadastro && formLogin) {
+    mostrarForm("login");
+}

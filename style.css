@@ -108,3 +108,132 @@ nav a:hover {
 .prox {
     right: 15px;
 }
+
+main {
+    width: min(1200px, calc(100% - 32px));
+    margin: 24px auto;
+}
+
+.slider-container {
+    margin-bottom: 32px;
+}
+
+.cat-produtos {
+    margin: 28px 0 40px;
+    padding: 24px;
+    background-color: #141D17;
+    border: 1px solid #1F3326;
+    border-radius: 12px;
+}
+
+.cat-produtos h2 {
+    margin-bottom: 20px;
+    color: #00FF66;
+    font-size: clamp(1.25rem, 2vw, 1.7rem);
+}
+
+.grid-produtos {
+    display: grid;
+    grid-template-columns: repeat(6, minmax(160px, 1fr));
+    gap: 16px;
+    overflow-x: auto;
+    padding-bottom: 8px;
+    scrollbar-color: #1F3326 #0B0F0D;
+    scrollbar-width: thin;
+}
+
+.produto-card {
+    display: flex;
+    min-width: 0;
+    flex-direction: column;
+    padding: 16px;
+    background-color: #0B0F0D;
+    border: 1px solid #1F3326;
+    border-radius: 10px;
+    transition: transform 0.2s, border-color 0.2s, box-shadow 0.2s;
+}
+
+.produto-card:hover {
+    border-color: #00FF66;
+    box-shadow: 0 8px 20px rgba(0, 255, 102, 0.1);
+}
+
+.produto-imagem {
+    display: flex;
+    width: 100%;
+    height: 160px;
+    align-items: center;
+    justify-content: center;
+    margin-bottom: 14px;
+    overflow: hidden;
+    background-color: #101713;
+    border-radius: 8px;
+    color: #9BAAA0;
+    text-align: center;
+}
+
+.produto-imagem img {
+    width: 100%;
+    height: 100%;
+    object-fit: contain;
+}
+
+.produto-card h3 {
+    min-height: 2.8em;
+    margin-bottom: 12px;
+    color: #E1E8E4;
+    font-size: 1rem;
+    line-height: 1.4;
+}
+
+.produto-card .preco {
+    margin-top: auto;
+    margin-bottom: 14px;
+    color: #00FF66;
+    font-size: 1.15rem;
+    font-weight: 700;
+}
+
+.produto-card button,
+.ver-mais {
+    padding: 10px 16px;
+    background-color: #00FF66;
+    border: 1px solid #00FF66;
+    border-radius: 6px;
+    color: #0B0F0D;
+    cursor: pointer;
+    font-size: 0.95rem;
+    font-weight: 700;
+    transition: background-color 0.2s, color 0.2s;
+}
+
+.produto-card button:hover,
+.ver-mais:hover {
+    background-color: #141D17;
+    color: #00FF66;
+}
+
+.ver-mais {
+    display: block;
+    margin: 22px auto 0;
+    padding: 10px 24px;
+}
+
+@media (max-width: 520px) {
+    main {
+        width: calc(100% - 20px);
+        margin-top: 16px;
+    }
+
+    .cat-produtos {
+        padding: 16px;
+    }
+
+    .grid-produtos {
+        gap: 10px;
+    }
+
+    .produto-card {
+        padding: 12px;
+    }
+}

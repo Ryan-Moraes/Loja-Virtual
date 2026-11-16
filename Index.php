@@ -1,23 +1,25 @@
 <?php
 require 'produtos.php';
 
-function renderProdutosPorCategoria($categoria) {
+function carregaProd($categoria) {
     global $produtos;
 
-    foreach ($produtos as $produto) {
-        if ($produto['cat'] !== $categoria) {
-            continue;
+    for ($repeticao = 0; $repeticao < 2; $repeticao++) {
+        foreach ($produtos as $produto) {
+            if ($produto['cat'] == $categoria) {
+                $precoFormatado = 'R$ ' . number_format((float) $produto['preco'], 2, ',', '.');
+                echo '
+                    <article class="produto-card">
+                        <div class="produto-imagem">
+                            <img src="' . $produto['imagem'] . '" alt="Imagem do produto">
+                        </div>
+                        <h3>' . $produto['nome'] . '</h3>
+                        <p class="preco">' . $precoFormatado . '</p>
+                        <button type="button">Comprar</button>
+                    </article>
+                ';
+            }
         }
-
-        $precoFormatado = 'R$ ' . number_format((float) $produto['preco'], 2, ',', '.');
-        echo '
-            <article class="produto-card">
-                <img src="' . $produto['imagem'] . '.png" alt="' . $produto['nome'] . '">
-                <h3>' . $produto['nome'] . '</h3>
-                <p class="preco">' . $precoFormatado . '</p>
-                <button>Comprar</button>
-            </article>
-        ';
     }
 }
 ?>
@@ -37,13 +39,13 @@ function renderProdutosPorCategoria($categoria) {
                 <li><a href="Index.php"><img id="logo" src="imagens/logo.png" alt="Logo da Loja"></a></li>
                 <li>
                     <ul id="conteudo">
-                        <li><a href="#CPU">CPU</a></li>
-                        <li><a href="#RAM">RAM</a></li>
-                        <li><a href="#GPU">GPU</a></li>
-                        <li><a href="#HDSSD">HD/SSD</a></li>
-                        <li><a href="#Monitor">Monitores</a></li>
-                        <li><a href="#Gabinete">Gabinetes</a></li>
-                        <li><a href="#MouseTeclado">Mouses/Teclados</a></li>
+                        <li><a href="#CPU" onclick="verMais('cpu')">CPU</a></li>
+                        <li><a href="#RAM" onclick="verMais('ram')">RAM</a></li>
+                        <li><a href="#GPU" onclick="verMais('gpu')">GPU</a></li>
+                        <li><a href="#HDSSD" onclick="verMais('hdssd')">HD/SSD</a></li>
+                        <li><a href="#Monitor" onclick="verMais('monitor')">Monitores</a></li>
+                        <li><a href="#Gabinete" onclick="verMais('gabinete')">Gabinetes</a></li>
+                        <li><a href="#MouseTeclado" onclick="verMais('mouseteclado')">Mouses/Teclados</a></li>
                     </ul>
                 </li>
                 <li><a href="Login.html">Login</a></li>
@@ -64,57 +66,57 @@ function renderProdutosPorCategoria($categoria) {
             <section id="CPU" class="cat-produtos">
                 <h2>Processadores (CPU)</h2>
                 <div class="grid-produtos" id="lista-cpu">
-                    <?php renderProdutosPorCategoria('CPU'); ?>
+                    <?php carregaProd('CPU'); ?>
                 </div>
-                <button class="ver-mais" onclick="verMais('cpu')">Ver mais</button>
+                <button class="ver-mais" type="button" onclick="verMais('cpu')">Ver mais</button>
             </section>
 
             <section id="RAM" class="cat-produtos">
                 <h2>Memórias RAM</h2>
                 <div class="grid-produtos" id="lista-ram">
-                    <?php renderProdutosPorCategoria('RAM'); ?>
+                    <?php carregaProd('RAM'); ?>
                 </div>
-                <button class="ver-mais" onclick="verMais('ram')">Ver mais</button>
+                <button class="ver-mais" type="button" onclick="verMais('ram')">Ver mais</button>
             </section>
 
             <section id="GPU" class="cat-produtos">
                 <h2>Placas de Vídeo (GPU)</h2>
                 <div class="grid-produtos" id="lista-gpu">
-                    <?php renderProdutosPorCategoria('GPU'); ?>
+                    <?php carregaProd('GPU'); ?>
                 </div>
-                <button class="ver-mais" onclick="verMais('gpu')">Ver mais</button>
+                <button class="ver-mais" type="button" onclick="verMais('gpu')">Ver mais</button>
             </section>
 
             <section id="HDSSD" class="cat-produtos">
                 <h2>HD / SSD</h2>
                 <div class="grid-produtos" id="lista-hdssd">
-                    <?php renderProdutosPorCategoria('HD/SSD'); ?>
+                    <?php carregaProd('HD/SSD'); ?>
                 </div>
-                <button class="ver-mais" onclick="verMais('hdssd')">Ver mais</button>
+                <button class="ver-mais" type="button" onclick="verMais('hdssd')">Ver mais</button>
             </section>
 
             <section id="Monitor" class="cat-produtos">
                 <h2>Monitores</h2>
                 <div class="grid-produtos" id="lista-monitor">
-                    <?php renderProdutosPorCategoria('Monitor'); ?>
+                    <?php carregaProd('Monitor'); ?>
                 </div>
-                <button class="ver-mais" onclick="verMais('monitor')">Ver mais</button>
+                <button class="ver-mais" type="button" onclick="verMais('monitor')">Ver mais</button>
             </section>
 
             <section id="Gabinete" class="cat-produtos">
                 <h2>Gabinetes</h2>
                 <div class="grid-produtos" id="lista-gabinete">
-                    <?php renderProdutosPorCategoria('Gabinete'); ?>
+                    <?php carregaProd('Gabinete'); ?>
                 </div>
-                <button class="ver-mais" onclick="verMais('gabinete')">Ver mais</button>
+                <button class="ver-mais" type="button" onclick="verMais('gabinete')">Ver mais</button>
             </section>
 
             <section id="MouseTeclado" class="cat-produtos">
                 <h2>Mouses e Teclados</h2>
                 <div class="grid-produtos" id="lista-mouseteclado">
-                    <?php renderProdutosPorCategoria('Mouses e Teclados'); ?>
+                    <?php carregaProd('Mouses e Teclados'); ?>
                 </div>
-                <button class="ver-mais" onclick="verMais('mouseteclado')">Ver mais</button>
+                <button class="ver-mais" type="button" onclick="verMais('mouseteclado')">Ver mais</button>
             </section>
         </main>
 
