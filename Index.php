@@ -1,3 +1,26 @@
+<?php
+require 'produtos.php';
+
+function renderProdutosPorCategoria($categoria) {
+    global $produtos;
+
+    foreach ($produtos as $produto) {
+        if ($produto['cat'] !== $categoria) {
+            continue;
+        }
+
+        $precoFormatado = 'R$ ' . number_format((float) $produto['preco'], 2, ',', '.');
+        echo '
+            <article class="produto-card">
+                <img src="' . $produto['imagem'] . '.png" alt="' . $produto['nome'] . '">
+                <h3>' . $produto['nome'] . '</h3>
+                <p class="preco">' . $precoFormatado . '</p>
+                <button>Comprar</button>
+            </article>
+        ';
+    }
+}
+?>
 <!DOCTYPE html>
 <html lang="pt-br">
     <head>
@@ -11,7 +34,7 @@
     <body>
         <nav>
             <ul>
-                <li><a href="Index.html"><img id="logo" src="imagens/logo.png" alt="Logo da Loja"></a></li>
+                <li><a href="Index.php"><img id="logo" src="imagens/logo.png" alt="Logo da Loja"></a></li>
                 <li>
                     <ul id="conteudo">
                         <li><a href="#CPU">CPU</a></li>
@@ -30,9 +53,9 @@
 
             <section class="slider-container">
                 <div class="slider">
-                    <div class="slide"><img src="imagens/Slide-01.png"></div>
-                    <div class="slide"><img src="imagens/Slide-02.png"></div>
-                    <div class="slide"><img src="imagens/Slide-03.png"></div>
+                    <div class="slide"><img src="imagens/Slide-01.png" alt="Slide 1"></div>
+                    <div class="slide"><img src="imagens/Slide-02.png" alt="Slide 2"></div>
+                    <div class="slide"><img src="imagens/Slide-03.png" alt="Slide 3"></div>
                 </div>
                 <button class="ante" onclick="mudarSlide(-1)"></button>
                 <button class="prox" onclick="mudarSlide(1)"></button>
@@ -41,7 +64,7 @@
             <section id="CPU" class="cat-produtos">
                 <h2>Processadores (CPU)</h2>
                 <div class="grid-produtos" id="lista-cpu">
-                    <!-- Cards de CPU entram aqui via PHP -->
+                    <?php renderProdutosPorCategoria('CPU'); ?>
                 </div>
                 <button class="ver-mais" onclick="verMais('cpu')">Ver mais</button>
             </section>
@@ -49,7 +72,7 @@
             <section id="RAM" class="cat-produtos">
                 <h2>Memórias RAM</h2>
                 <div class="grid-produtos" id="lista-ram">
-                    <!-- Cards de RAM entram aqui via PHP -->
+                    <?php renderProdutosPorCategoria('RAM'); ?>
                 </div>
                 <button class="ver-mais" onclick="verMais('ram')">Ver mais</button>
             </section>
@@ -57,7 +80,7 @@
             <section id="GPU" class="cat-produtos">
                 <h2>Placas de Vídeo (GPU)</h2>
                 <div class="grid-produtos" id="lista-gpu">
-                    <!-- Cards de GPU entram aqui via PHP -->
+                    <?php renderProdutosPorCategoria('GPU'); ?>
                 </div>
                 <button class="ver-mais" onclick="verMais('gpu')">Ver mais</button>
             </section>
@@ -65,7 +88,7 @@
             <section id="HDSSD" class="cat-produtos">
                 <h2>HD / SSD</h2>
                 <div class="grid-produtos" id="lista-hdssd">
-                    <!-- Cards de HD/SSD entram aqui via PHP -->
+                    <?php renderProdutosPorCategoria('HD/SSD'); ?>
                 </div>
                 <button class="ver-mais" onclick="verMais('hdssd')">Ver mais</button>
             </section>
@@ -73,7 +96,7 @@
             <section id="Monitor" class="cat-produtos">
                 <h2>Monitores</h2>
                 <div class="grid-produtos" id="lista-monitor">
-                    <!-- Cards de Monitores entram aqui via PHP -->
+                    <?php renderProdutosPorCategoria('Monitor'); ?>
                 </div>
                 <button class="ver-mais" onclick="verMais('monitor')">Ver mais</button>
             </section>
@@ -81,7 +104,7 @@
             <section id="Gabinete" class="cat-produtos">
                 <h2>Gabinetes</h2>
                 <div class="grid-produtos" id="lista-gabinete">
-                    <!-- Cards de Gabinetes entram aqui via PHP -->
+                    <?php renderProdutosPorCategoria('Gabinete'); ?>
                 </div>
                 <button class="ver-mais" onclick="verMais('gabinete')">Ver mais</button>
             </section>
@@ -89,7 +112,7 @@
             <section id="MouseTeclado" class="cat-produtos">
                 <h2>Mouses e Teclados</h2>
                 <div class="grid-produtos" id="lista-mouseteclado">
-                    <!-- Cards de Periféricos entram aqui via PHP -->
+                    <?php renderProdutosPorCategoria('Mouses e Teclados'); ?>
                 </div>
                 <button class="ver-mais" onclick="verMais('mouseteclado')">Ver mais</button>
             </section>
