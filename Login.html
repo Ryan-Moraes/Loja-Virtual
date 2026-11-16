@@ -28,6 +28,40 @@
         </nav>
         <main>
             <h1>Login</h1>
+            <div class="logcad-container">
+                <div class="logcad-tabs">
+                    <button onclick="mostrarForm('cadastro')">Cadastro</button>
+                    <button onclick="mostrarForm('login')">Login</button>
+                </div>
+                    <section id="form-cadastro">
+                        <form>
+                            <label for="nome">Nome completo</label>
+                            <input type="text" id="nome" name="nome" placeholder="Digite seu nome completo." required>
+
+                            <label for="email">Email</label>
+                            <input type="email" id="email" name="email" placeholder="Digite seu email." required>
+
+                            <label for="usuario">Usuário</label>
+                            <input type="text" id="usuario" name="usuario" placeholder="Crie seu usuário." required>
+
+                            <label for="senhaCadastro">Senha</label>
+                            <input type="password" id="senhaCadastro" name="senhaCadastro" placeholder="Crie sua senha." required>
+
+                            <button type="submit">Cadastrar</button>
+                        </form>
+                    </section>
+                    <section id="form-login">
+                        <form>
+                            <label for="usuarioLogin">Email ou usuário</label>
+                            <input type="text" id="usuarioLogin" name="login" placeholder="Digite seu email ou usuário" required>
+
+                            <label for="senhaLogin">Senha</label>
+                            <input type="password" id="senhaLogin" name="senhaLogin" placeholder="Digite sua senha" required>
+
+                            <button type="submit">Entrar</button>
+                        </form>
+                    </section>
+            </div>
         </main>
 
         <script src="script.js"></script>

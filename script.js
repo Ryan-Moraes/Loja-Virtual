@@ -25,3 +25,21 @@ mostrarSlide(slideIndex);
 setInterval(() => {
         mudarSlide(1);
     }, 8000);
+
+const formCadastro = document.getElementById("form-cadastro");
+const formLogin = document.getElementById("form-login");
+
+function mostrarForm(form) {
+    formCadastro.style.display = "none";
+    formLogin.style.display = "none";
+
+    if (form === "cadastro") {
+        formCadastro.style.display = "block";
+    }
+
+    if (form === "login") {
+        formLogin.style.display = "block";
+    }
+}
+
+mostrarForm("login");
