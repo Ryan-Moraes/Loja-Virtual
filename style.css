@@ -237,3 +237,94 @@ main {
         padding: 12px;
     }
 }
+
+main > h1 {
+    margin: 32px 0 20px;
+    color: #00FF66;
+    text-align: center;
+}
+
+.logcad-container {
+    width: min(100%, 440px);
+    margin: 0 auto 40px;
+    padding: 24px;
+    background-color: #141D17;
+    border: 1px solid #1F3326;
+    border-radius: 12px;
+}
+
+.logcad-tabs {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: 10px;
+    margin-bottom: 20px;
+}
+
+.logcad-tabs button {
+    padding: 10px;
+    background-color: #0B0F0D;
+    border: 1px solid #1F3326;
+    border-radius: 6px;
+    color: #E1E8E4;
+    cursor: pointer;
+    font-size: 0.95rem;
+}
+
+.logcad-tabs button:hover {
+    border-color: #00FF66;
+    color: #00FF66;
+}
+
+.logcad-container section form {
+    display: flex;
+    flex-direction: column;
+    gap: 8px;
+}
+
+.logcad-container label {
+    margin-top: 8px;
+    color: #E1E8E4;
+    font-size: 0.95rem;
+}
+
+.logcad-container input {
+    width: 100%;
+    padding: 11px 12px;
+    background-color: #0B0F0D;
+    border: 1px solid #1F3326;
+    border-radius: 6px;
+    color: #E1E8E4;
+    font: inherit;
+}
+
+.logcad-container input::placeholder {
+    color: #9BAAA0;
+}
+
+.logcad-container input:focus {
+    outline: 1px solid #00FF66;
+    border-color: #00FF66;
+}
+
+.logcad-container form button {
+    margin-top: 14px;
+    padding: 11px;
+    background-color: #00FF66;
+    border: 1px solid #00FF66;
+    border-radius: 6px;
+    color: #0B0F0D;
+    cursor: pointer;
+    font-size: 0.95rem;
+    font-weight: 700;
+}
+
+.logcad-container form button:hover {
+    background-color: #141D17;
+    color: #00FF66;
+}
+
+@media (max-width: 520px) {
+    .logcad-container {
+        padding: 18px;
+    }
+}
